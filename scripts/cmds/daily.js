@@ -74,7 +74,7 @@ module.exports = {
 			return message.reply(msg);
 		}
 
-		const dateTime = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY");
+		const dateTime = moment.tz("Asia/Dhaka").format("DD/MM/YYYY");
 		const date = new Date();
 		const currentDay = date.getDay(); // 0: sunday, 1: monday, 2: tuesday, 3: wednesday, 4: thursday, 5: friday, 6: saturday
 		const { senderID } = event;

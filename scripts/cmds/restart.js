@@ -27,7 +27,7 @@ module.exports = {
 			restartting: "🔄 | Đang khởi động lại bot..."
 		},
 		en: {
-			restartting: "🔄 | Restarting bot..."
+			restartting: "🔴🟡🟢 | 𝐀𝐒𝐈𝐅 𝐱𝟔𝟗 Restarting bot..."
 		}
 	},
 

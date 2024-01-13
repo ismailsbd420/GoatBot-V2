@@ -46,10 +46,10 @@ module.exports = {
 			confirmThisThread: "Please react to this message to confirm change prefix in your box chat",
 			successGlobal: "Changed prefix of system bot to: %1",
 			successThisThread: "Changed prefix in your box chat to: %1",
-			myPrefix: "🌐 System prefix: %1\n🛸 Your box chat prefix: %2"
+			myPrefix: "▬▬▬.◙.▬▬▬\n═▂▄▄▓▄▄▂\n◢◤\n█▀▀████▄▄▄◢◤\n█▄ █ █▄ ███▀▀▀▀▀▀╬\n◥█████◤\n══╩══╩═\n╬═╬\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20*𝐀𝐒𝐈𝐅 𝐱𝟔𝟗*\n╬═╬\n╬═╬\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20*𝗦𝘆𝘀𝘁𝗲𝗺 𝗣𝗿𝗲𝗳𝗶𝘅*\n╬═╬\n╬═╬\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20[ %1 ]\x20\x20\x20\n╬═╬☻/\n╬═╬/▌\x20\x20\x20\x20\x20\x20*𝗬𝗼𝘂𝗿 𝗕𝗼𝘅 𝗖𝗵𝗮𝘁 𝗣𝗿𝗲𝗳𝗶𝘅*\n╬═╬/\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20[ %2 ]"
 		}
 	},
-
+    onStart: async function(){}, 
 	onStart: async function ({ message, role, args, commandName, event, threadsData, getLang }) {
 		if (!args[0])
 			return message.SyntaxError();

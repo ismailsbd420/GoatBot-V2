@@ -37,6 +37,25 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, api, event, args, getLang }) {
+    function checkPermissionAndSendMessage(permission, message) {
+  if (!permission.includes(event.senderID)) {
+    api.sendMessage(message, event.threadID, event.messageID);
+    return false;
+  }
+  return true;
+}
+
+const GODPermission = global.GoatBot.config.GOD;
+
+const permissionMessage = "You don't have enough permission to use this command. Only my authors and admin have access";
+
+if (!checkPermissionAndSendMessage(GODPermission, permissionMessage)) {
+  return;
+}
+    
+if (!checkPermissionAndSendMessage(adminBotPermission, permissionMessage)) {
+  return;
+}
 		let fbstate;
 		let fileName;
 
