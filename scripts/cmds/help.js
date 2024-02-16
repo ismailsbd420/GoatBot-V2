@@ -162,6 +162,7 @@ module.exports = {
 			roleText2: "2 (Admin bot)",
 			roleText0setRole: "0 (set role, all users)",
 			roleText1setRole: "1 (set role, group administrators)",
+			roleText2setRole: "2 (set role, admin only",
 			pageNotFound: "Page %1 does not exist"
 		}
 	},
@@ -278,6 +279,8 @@ module.exports = {
 				(roleIsSet ? getLang("roleText0setRole") : getLang("roleText0")) :
 				roleOfCommand == 1 ?
 					(roleIsSet ? getLang("roleText1setRole") : getLang("roleText1")) :
+			    roleOfCommand == 2 ?
+				    (roleIsSet ? getLang("roleText2setRole") : getLang("roleText2")) :
 					getLang("roleText2");
 
 			const author = configCommand.author;

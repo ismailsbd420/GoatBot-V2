@@ -37,7 +37,8 @@ module.exports = {
 		}
 	},
 
-	onStart: async function ({ args, message, getLang }) {
+	onStart: async function ({ args, message, event, getLang }) {
+		const { messageID, threadID } = event;
 		if (!args[0]) {
 			return message.reply(getLang("missingUrl"));
 		}
@@ -55,10 +56,10 @@ module.exports = {
 			const stream = await global.utils.getStreamFromURL(response.data.url2); //url2 is for high quality videos & url1 is for low quality videos
 			await message.reply({ attachment: stream });
 
-			message.unsend((await msgSend).messageID);
+			message.unsend((await msgSend).messageID, threadID);
 		}
 		catch (e) {
-			message.unsend((await msgSend).messageID);
+			message.unsend((await msgSend).messageID, threadID);
 			return message.reply(getLang("tooLarge"));
 		}
 	}

@@ -2,21 +2,17 @@ const axios = require('axios');
 
 module.exports = {
   config: {
-    name: "imagine2",
-    aliases: ["i2"],
-    author: "Tashrif",
+    name: "dreamshaper",
+    aliases: ["ds"],
+    author: "404",
     version: "1.0",
-    countDown: 10,
+    countDown: 5,
     role: 0,
     shortDescription: "Generates an image from a text description",
     longDescription: "Generates an image from a text description",
-    category: "ai",
+    category: "image",
     guide: {
-      en: `{pn} prompt | model | ratio\\Models:\\
-        1: Imagine V4
-        2: Creative V4
-        3: Imagine V3
-        4: Imagine V1`,
+      en: `{pn} prompt`,
       
     }
   },
@@ -33,20 +29,17 @@ module.exports = {
 
     const info = args.join(" ");
     if (!info) {
-      return message.reply(`- baka, type your imagination!`);
+      return message.reply(`type your imagination!`);
     } else {
-      const msg = info.split("|");
-      const text = msg[0];
-      const model = msg[1] || '1'; 
       const timestamp = new Date().getTime();
 
       try {
         let msgSend = message.reply(getLang("loading"));
         const { data } = await axios.get(
-      `https://prodia.aligned26.repl.co/generate?prompt=${text}&model=${model}`
+      `https://f2473acb-90cc-4912-aa2b-3183d01c51dc-00-34773xvoxpk0n.riker.replit.dev/dreamshaper/api?prompt=${info}`
         );
 
-        const imageUrls = data.imageUrls[0];
+        const imageUrls = data.output[0];
 
         const shortLink = await require('tinyurl').shorten(imageUrls);
        

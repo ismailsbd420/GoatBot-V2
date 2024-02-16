@@ -33,9 +33,11 @@ module.exports = {
 				+ "\n   + <commandName>: command name"
 				+ "\n   + <new role>: new role of command with:"
 				+ "\n   + <new role> = 0: command can be used by all members in group"
-				+ "\n   + <new role> = 1: command can be used by admin only"
+				+ "\n   + <new role> = 1: command can be used by group Administrator only"
+				+ "\n   + <new role> = 2: command can be used by only admin bot"
 				+ "\n   + <new role> = default: reset role of command to default"
 				+ "\n   Example:"
+			    + "\n    {pn} rank 2: (command can be used by only admin bot)"
 				+ "\n    {pn} rank 1: (command rank can be used by admin only)"
 				+ "\n    {pn} rank 0: (command rank can be used by all members in group)"
 				+ "\n    {pn} rank default: reset to default"
@@ -83,12 +85,21 @@ module.exports = {
 			return message.SyntaxError();
 		if (role < 1)
 			return message.reply(getLang("noPermission"));
+		if (role < 2)
+		    return message.reply(getLang("noPermission"));
 
 		const command = commands.get(commandName) || commands.get(aliases.get(commandName));
 		if (!command)
 			return message.reply(getLang("commandNotFound", commandName));
 		commandName = command.config.name;
 		if (command.config.role > 1)
+			return message.reply(getLang("noChangeRole", commandName));
+
+		const commando = commands.get(commandName) || commands.get(aliases.get(commandName));
+		if (!commando)
+			return message.reply(getLang("commandNotFound", commandName));
+		commandName = command.config.name;
+		if (command.config.role > 2)
 			return message.reply(getLang("noChangeRole", commandName));
 
 		let Default = false;
